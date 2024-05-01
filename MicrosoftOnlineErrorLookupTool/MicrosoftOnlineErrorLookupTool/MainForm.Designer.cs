@@ -125,7 +125,7 @@
             this.textBoxRemediationDetails.Location = new System.Drawing.Point(89, 103);
             this.textBoxRemediationDetails.Multiline = true;
             this.textBoxRemediationDetails.Name = "textBoxRemediationDetails";
-            this.textBoxRemediationDetails.Size = new System.Drawing.Size(529, 123);
+            this.textBoxRemediationDetails.Size = new System.Drawing.Size(529, 135);
             this.textBoxRemediationDetails.TabIndex = 7;
             // 
             // groupBox2
@@ -137,7 +137,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 84);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(624, 235);
+            this.groupBox2.Size = new System.Drawing.Size(624, 244);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Error details";
@@ -175,7 +175,7 @@
             this.statusStripMainForm.BackColor = System.Drawing.Color.White;
             this.statusStripMainForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStripMainForm.Location = new System.Drawing.Point(0, 331);
+            this.statusStripMainForm.Location = new System.Drawing.Point(0, 327);
             this.statusStripMainForm.Name = "statusStripMainForm";
             this.statusStripMainForm.Size = new System.Drawing.Size(646, 22);
             this.statusStripMainForm.TabIndex = 9;
@@ -192,7 +192,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(646, 353);
+            this.ClientSize = new System.Drawing.Size(646, 349);
             this.Controls.Add(this.statusStripMainForm);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
