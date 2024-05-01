@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -12,6 +13,32 @@ namespace MicrosoftOnlineErrorLookupTool
         public MainForm()
         {
             InitializeComponent();
+            CheckConnection();
+        }
+
+        private void CheckConnection()
+        {
+            try
+            {
+                Ping ping = new Ping();
+                PingReply reply = ping.Send(new Uri(ErrorUrl).Host);
+
+                if (reply.Status == IPStatus.Success)
+                {
+                    toolStripStatusLabel.Text = @"Connected to the Microsoft lookup service";
+                    toolStripStatusLabel.ForeColor = System.Drawing.Color.Green;
+                }
+                else
+                {
+                    toolStripStatusLabel.Text = @"Disconnected from the Microsoft lookup service";
+                    toolStripStatusLabel.ForeColor = System.Drawing.Color.Red;
+                }
+            }
+            catch (Exception ex)
+            {
+                toolStripStatusLabel.Text = @"Error: " + ex.Message;
+                toolStripStatusLabel.ForeColor = System.Drawing.Color.Red;
+            }
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -23,6 +50,12 @@ namespace MicrosoftOnlineErrorLookupTool
                 MessageBox.Show(@"Please enter an error code to lookup", @"Error - missing error code", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            // Preprocess error code
+            // if (errorCode.StartsWith("AADSTS", StringComparison.OrdinalIgnoreCase))
+            // {
+            //     errorCode = errorCode.Substring(6); // Remove the first 6 characters
+            // }
 
             string errorPageUrl = ErrorUrl + WebUtility.UrlEncode(errorCode);
 

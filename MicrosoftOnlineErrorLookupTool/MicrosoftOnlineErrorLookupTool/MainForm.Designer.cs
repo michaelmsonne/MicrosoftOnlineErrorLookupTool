@@ -40,9 +40,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStripMainForm = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1.SuspendLayout();
             this.menuStripMainForm.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.statusStripMainForm.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxErrorCodeInput
@@ -167,12 +170,30 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // statusStripMainForm
+            // 
+            this.statusStripMainForm.BackColor = System.Drawing.Color.White;
+            this.statusStripMainForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel});
+            this.statusStripMainForm.Location = new System.Drawing.Point(0, 331);
+            this.statusStripMainForm.Name = "statusStripMainForm";
+            this.statusStripMainForm.Size = new System.Drawing.Size(646, 22);
+            this.statusStripMainForm.TabIndex = 9;
+            this.statusStripMainForm.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(112, 17);
+            this.toolStripStatusLabel.Text = "toolStripStatusLabel";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(646, 329);
+            this.ClientSize = new System.Drawing.Size(646, 353);
+            this.Controls.Add(this.statusStripMainForm);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStripMainForm);
@@ -187,6 +208,8 @@
             this.menuStripMainForm.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.statusStripMainForm.ResumeLayout(false);
+            this.statusStripMainForm.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,6 +229,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStripMainForm;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
     }
 }
 
