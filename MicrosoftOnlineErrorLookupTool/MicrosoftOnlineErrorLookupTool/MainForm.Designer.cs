@@ -52,7 +52,7 @@
             this.textBoxErrorCodeInput.Name = "textBoxErrorCodeInput";
             this.textBoxErrorCodeInput.Size = new System.Drawing.Size(100, 20);
             this.textBoxErrorCodeInput.TabIndex = 0;
-            this.textBoxErrorCodeInput.Text = "50049";
+            this.textBoxErrorCodeInput.Text = "50140";
             // 
             // buttonGetDetailsFromErrorCode
             // 
@@ -177,6 +177,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStripMainForm);
             this.MainMenuStrip = this.menuStripMainForm;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Microsoft Online Error lookup";
