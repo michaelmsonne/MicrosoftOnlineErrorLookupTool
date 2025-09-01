@@ -20,10 +20,10 @@ namespace MicrosoftOnlineErrorLookupTool
         {
             try
             {
-                Ping ping = new Ping();
-                PingReply reply = ping.Send(new Uri(ErrorUrl).Host);
+                var ping = new Ping();
+                var reply = ping.Send(new Uri(ErrorUrl).Host);
 
-                if (reply.Status == IPStatus.Success)
+                if (reply != null && reply.Status == IPStatus.Success)
                 {
                     toolStripStatusLabel.Text = @"Connected to the Microsoft lookup service";
                     toolStripStatusLabel.ForeColor = System.Drawing.Color.Green;
@@ -43,7 +43,7 @@ namespace MicrosoftOnlineErrorLookupTool
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            string errorCode = textBoxErrorCodeInput.Text.Trim();
+            var errorCode = textBoxErrorCodeInput.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(errorCode))
             {
@@ -57,14 +57,14 @@ namespace MicrosoftOnlineErrorLookupTool
             //     errorCode = errorCode.Substring(6); // Remove the first 6 characters
             // }
 
-            string errorPageUrl = ErrorUrl + WebUtility.UrlEncode(errorCode);
+            var errorPageUrl = ErrorUrl + WebUtility.UrlEncode(errorCode);
 
             try
             {
-                using (WebClient client = new WebClient())
+                using (var client = new WebClient())
                 {
-                    string htmlCode = client.DownloadString(errorPageUrl);
-                    string[] errorDetails = ParseErrorDetails(htmlCode);
+                    var htmlCode = client.DownloadString(errorPageUrl);
+                    var errorDetails = ParseErrorDetails(htmlCode);
 
                     // Set text boxes with returned values
                     //textBoxErrorCodeDetails.Text = errorDetails[0];
@@ -83,30 +83,30 @@ namespace MicrosoftOnlineErrorLookupTool
             string errorCode = "", message = "", remediation = "";
 
             // Define regular expressions to match the error code, message, and remediation
-            Regex errorCodeRegex = new Regex(@"<td>Error Code<\/td>\s*<td>(.*?)<\/td>");
-            Regex messageRegex = new Regex(@"<td>Message<\/td>\s*<td>(.*?)<\/td>");
-            Regex remediationRegex = new Regex(@"<td>Remediation<\/td>\s*<td>(.*?)<\/td>");
+            var errorCodeRegex = new Regex(@"<td>Error Code<\/td>\s*<td>(.*?)<\/td>");
+            var messageRegex = new Regex(@"<td>Message<\/td>\s*<td>(.*?)<\/td>");
+            var remediationRegex = new Regex(@"<td>Remediation<\/td>\s*<td>(.*?)<\/td>");
 
             // Match the regular expressions in the HTML content
-            Match errorCodeMatch = errorCodeRegex.Match(html);
+            var errorCodeMatch = errorCodeRegex.Match(html);
             if (errorCodeMatch.Success)
             {
                 errorCode = errorCodeMatch.Groups[1].Value.Trim();
             }
 
-            Match messageMatch = messageRegex.Match(html);
+            var messageMatch = messageRegex.Match(html);
             if (messageMatch.Success)
             {
                 message = messageMatch.Groups[1].Value.Trim();
             }
 
-            Match remediationMatch = remediationRegex.Match(html);
+            var remediationMatch = remediationRegex.Match(html);
             if (remediationMatch.Success)
             {
                 remediation = remediationMatch.Groups[1].Value.Trim();
             }
 
-            return new string[] { errorCode, message, remediation };
+            return new[] { errorCode, message, remediation };
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
